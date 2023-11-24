@@ -1,0 +1,28 @@
+infrastructure_deployments:
+  - name: Project My AWS Sandbox VPC Example
+    tags:
+      tag1: value1
+      tag2: value2
+    git:
+      repo_url: ssh://git@github.com/jdoe/my_aws_sandbox.git
+      branch: preview-version
+      ssh_key: /home/jdoe/.ssh/id_rsa_jdoe_2030-01-01
+    source_root: /
+    env_vars:
+      VAR1: value1
+      VAR2: value2
+      AWS_PROFILE: mycompany
+    enabled: true
+    drift_check_interval: 30  # In minutes
+
+  - name: Project My AWS S3 Bucket Example
+    git:
+      repo_url: ssh://git@github.com/jdoe/my_aws_s3_bucket.git
+      branch: main
+      ssh_key: /home/jdoe/.ssh/id_rsa_jdoe_2030-01-01
+    drift_check_interval: 60  # In minutes
+
+server:
+  port: 8080
+  host: 0.0.0.0
+  domain: "tfdriftagent.example.com"
